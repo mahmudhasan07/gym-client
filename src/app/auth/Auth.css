@@ -4,5 +4,6 @@
 }
 
 #auth_banner {
-    transition: all 1.5s;
+    transition: all 1.5s; 
+    /* transform: translateX(0%); */
 }

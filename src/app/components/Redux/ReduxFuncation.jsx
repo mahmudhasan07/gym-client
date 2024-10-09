@@ -2,10 +2,11 @@
 import { createAsyncThunk, createSlice, isFulfilled, isRejected, isRejectedWithValue } from '@reduxjs/toolkit'
 import app from '../Firebase/firebase.config';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import useAxios, { AxiosSource } from '../Hooks/useAxios';
 
 
 const auth = getAuth(app);
-
+const axiosLink = useAxios(AxiosSource)
 const initialState = {
     pending: "",
     error: {},
@@ -25,6 +26,16 @@ const createUser = createAsyncThunk(
                             console.log(res);
                             if (res) {
                                 signOut(auth)
+                                const role = ""
+                                axiosLink.post('/users', {name, email, photo, role})
+                                .then(res=>{
+                                    console.log(res);
+                                    
+                                })
+                                .catch(err=>{
+                                    console.log(err);
+                                })
+
                                 return res.user
                             }
                         })
@@ -36,16 +47,24 @@ const createUser = createAsyncThunk(
     }
 )
 
-export const signUser = createAsyncThunk(
+const signIn = createAsyncThunk(
     'users/signIn',
-    async () => {
+    async ({email, password}) => {
         await signInWithEmailAndPassword(auth, email, password)
             .then(res => {
-                return res
+                return res.user
             })
             .catch(err => {
-                throw err
+                throw err.message
             })
+    }
+)
+
+const logOut = createAsyncThunk(
+    "users/logOut",
+    async()=>{
+        return await signOut(auth)
+
     }
 )
 
@@ -60,21 +79,29 @@ export const usersSlice = createSlice({
         // Add reducers for additional action types here, and handle loading state as needed
         builder
             .addCase(createUser.pending, (state, action) => {
-                console.log(action);
 
             })
             .addCase(createUser.fulfilled, (state, action) => {
-                console.log(action);
 
             })
             .addCase(createUser.rejected, (state, action) => {
-                console.log(action);
                 state.error = action.error
+            })
+            .addCase(signIn.pending, (state, action) => {
+
+            })
+            .addCase(signIn.fulfilled, (state, action) => {
+
+            })
+            .addCase(signIn.rejected, (state, action) => {
+                state.error = action.error
+            })
+            .addCase(logOut.fulfilled, (state, action) => {
 
             })
     },
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser }
+export { createUser, signIn, logOut }
 export default usersSlice.reducer

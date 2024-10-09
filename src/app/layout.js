@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
       <body className="container">
         <ReduxProvider>
           <ContextAPI>
-            <NavBar></NavBar>
             {children}
           </ContextAPI>
         </ReduxProvider>
