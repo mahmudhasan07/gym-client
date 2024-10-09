@@ -1,5 +1,5 @@
 'use client'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, isFulfilled, isRejected, isRejectedWithValue } from '@reduxjs/toolkit'
 import app from '../Firebase/firebase.config';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -8,29 +8,30 @@ const auth = getAuth(app);
 
 const initialState = {
     pending: "",
-    error: "",
-    complete: ""
+    error: {},
+    complete: {}
 }
 const createUser = createAsyncThunk(
     'users/create',
-    async (email, password, name, photo) => {
+    async ({ email, password, name, photo }) => {
+        console.log(email, password, name, photo);
         await createUserWithEmailAndPassword(auth, email, password, name, photo)
             .then(async (res) => {
                 if (res) {
                     await updateProfile(auth.currentUser, {
                         displayName: name, photoURL: photo
                     })
-                        .then(res => {
+                        .then(response => {
                             console.log(res);
                             if (res) {
                                 signOut(auth)
-                                return res
+                                return res.user
                             }
                         })
                 }
             })
             .catch(err => {
-                return err
+                throw err.message
             })
     }
 )
@@ -43,7 +44,7 @@ export const signUser = createAsyncThunk(
                 return res
             })
             .catch(err => {
-                return err
+                throw err
             })
     }
 )
@@ -57,18 +58,23 @@ export const usersSlice = createSlice({
     },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(createUser.pending, (state, action) => {
-            state.pending(action.payload)
-        })
-        builder.addCase(createUser.fulfilled, (state, action) => {
-            state.complete(action.payload)
-        })
-        builder.addCase(createUser.rejected, (state, action) => {
-            state.error(action.payload)
-        })
+        builder
+            .addCase(createUser.pending, (state, action) => {
+                console.log(action);
+
+            })
+            .addCase(createUser.fulfilled, (state, action) => {
+                console.log(action);
+
+            })
+            .addCase(createUser.rejected, (state, action) => {
+                console.log(action);
+                state.error = action.error
+
+            })
     },
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser, signUser }
+export { createUser }
 export default usersSlice.reducer

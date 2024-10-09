@@ -6,11 +6,11 @@ const Login = () => {
         <section>
         <form action="" className='space-y-4'>
             <div >
-                <label className='text-xl font-semibold' for="name">Email:</label> <br />
+                <label className='text-xl font-semibold' >Email:</label> <br />
                 <input type="text"  className='border-2 p-1 rounded-lg border-gray-600 w-96' />
             </div>
             <div >
-                <label className='text-xl font-semibold' for="name">Password:</label> <br />
+                <label className='text-xl font-semibold'>Password:</label> <br />
                 <input type="text"  className='border-2 p-1 rounded-lg border-gray-600 w-96' />
             </div>
             <div className='text-center'>
