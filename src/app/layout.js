@@ -1,7 +1,10 @@
 
+import { Provider } from "react-redux";
 import ContextAPI from "./components/ContextAPI/ContextAPI";
 import NavBar from "./components/Navbar/Navbar";
 import "./globals.css";
+import { store } from "./components/Redux/Store";
+import ReduxProvider from "./components/Redux/ReduxProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,10 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="container">
-       <ContextAPI>
-       <NavBar></NavBar>
-       {children}
-       </ContextAPI>
+        <ReduxProvider>
+          <ContextAPI>
+            <NavBar></NavBar>
+            {children}
+          </ContextAPI>
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -1,12 +1,15 @@
 'use client'
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Registration = () => {
-
+    // const count = useSelector((state) => state.Auth.value)
+    // console.log(count);
+    
     const handleRegistration = (e) => {
         e.preventDefault()
         const inputs = e.target
-        
+
     }
 
     return (
