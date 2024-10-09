@@ -1,0 +1,8 @@
+#auth {
+    height: calc(100vh - 80px);
+    transition: all 1.5s;
+}
+
+#auth_banner {
+    transition: all 1.5s;
+}
