@@ -1,14 +1,25 @@
 'use client'
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Registration = () => {
     // const count = useSelector((state) => state.Auth.value)
     // console.log(count);
-    
+    const dispatch = useDispatch()
+
     const handleRegistration = (e) => {
         e.preventDefault()
         const inputs = e.target
+        const name = inputs.name.value
+        const email = inputs.email.value
+        const photo = inputs.photo.files[0]
+        const password = inputs.password.value
+        console.log(photo);
+
+
+
+
+
 
     }
 
