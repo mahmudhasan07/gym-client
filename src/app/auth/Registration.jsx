@@ -15,6 +15,7 @@ const Registration = () => {
         const email = inputs.email.value
         const image = inputs.photo.files[0]
         const password = inputs.password.value
+        const role = "trainee"
         if (email && password) {
             const fromData = new FormData()
             fromData.append("file", image)
@@ -24,7 +25,7 @@ const Registration = () => {
                     console.log(res);
                     if (res.data) {
                         const photo = res.data.secure_url
-                        dispatch(createUser({ email, password, name, photo }))
+                        dispatch(createUser({ email, password, name, photo, role }))
                             .then(res => {
                                 if (res.error) {
                                     toast.error(res.error.message, {

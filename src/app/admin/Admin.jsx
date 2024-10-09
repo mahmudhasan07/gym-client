@@ -2,9 +2,9 @@ import React from 'react';
 
 const Admin = () => {
     return (
-        <div>
+        <section className='bg-gray-300 w-full'>
             <h1>Hello Admin</h1>
-        </div>
+        </section>
     );
 };
 

@@ -14,7 +14,7 @@ const initialState = {
 }
 const createUser = createAsyncThunk(
     'users/create',
-    async ({ email, password, name, photo }) => {
+    async ({ email, password, name, photo, role }) => {
         console.log(email, password, name, photo);
         await createUserWithEmailAndPassword(auth, email, password, name, photo)
             .then(async (res) => {
@@ -26,7 +26,7 @@ const createUser = createAsyncThunk(
                             console.log(res);
                             if (res) {
                                 signOut(auth)
-                                const role = ""
+                                
                                 axiosLink.post('/users', {name, email, photo, role})
                                 .then(res=>{
                                     console.log(res);

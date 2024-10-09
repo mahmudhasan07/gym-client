@@ -4,7 +4,7 @@ import AdminNav from "./AdminNav";
 
 export default function Page({ children }) {
     return (
-        <div className="flex ">
+        <div className="flex">
             <AdminNav></AdminNav>
             <Admin></Admin>
         </div>
