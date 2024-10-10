@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { signIn } from '../components/Redux/ReduxFuncation';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -33,6 +34,9 @@ const Login = () => {
                 </div>
                 <div className='text-center'>
                     <button className='border-2 px-3 py-2 w-32 text-lg font-bold bg-blue-600 text-white rounded-lg'>Log In</button>
+                </div>
+                <div className='text-end'>
+                <Link href={'/'}> <button className='text-lg text-blue-700 font-bold '>Back to Home</button></Link>
                 </div>
             </form>
         </section>

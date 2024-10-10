@@ -8,7 +8,7 @@ import './Auth.css'
 const Auth = () => {
     const [position, setPosition] = useState('translate-x-full');
     return (
-        <section id='auth' className='bg-gray-200'>
+        <section id='auth' className='bg-gray-200 h-screen'>
             <div className='border-2 bg-white w-2/3 p-5 rounded-lg border-gray-300 relative top-[20%] mx-auto '>
                 <div className='flex justify-around'>
                 <div className='my-auto'>

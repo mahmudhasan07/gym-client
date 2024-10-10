@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar/Navbar";
 import "./globals.css";
 import { store } from "./components/Redux/Store";
 import ReduxProvider from "./components/Redux/ReduxProvider";
+import TankStackQuery from "./components/Hooks/TankStackQuery";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,11 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="container">
-        <ReduxProvider>
-          <ContextAPI>
-            {children}
-          </ContextAPI>
-        </ReduxProvider>
+        <TankStackQuery>
+          <ReduxProvider>
+            <ContextAPI>
+              {children}
+            </ContextAPI>
+          </ReduxProvider>
+        </TankStackQuery>
       </body>
     </html>
   );

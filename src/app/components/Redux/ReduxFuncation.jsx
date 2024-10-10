@@ -26,15 +26,15 @@ const createUser = createAsyncThunk(
                             console.log(res);
                             if (res) {
                                 signOut(auth)
-                                
-                                axiosLink.post('/users', {name, email, photo, role})
-                                .then(res=>{
-                                    console.log(res);
-                                    
-                                })
-                                .catch(err=>{
-                                    console.log(err);
-                                })
+
+                                axiosLink.post('/users', { name, email, photo, role })
+                                    .then(res => {
+                                        console.log(res);
+
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    })
 
                                 return res.user
                             }
@@ -49,7 +49,7 @@ const createUser = createAsyncThunk(
 
 const signIn = createAsyncThunk(
     'users/signIn',
-    async ({email, password}) => {
+    async ({ email, password }) => {
         await signInWithEmailAndPassword(auth, email, password)
             .then(res => {
                 return res.user
@@ -62,11 +62,30 @@ const signIn = createAsyncThunk(
 
 const logOut = createAsyncThunk(
     "users/logOut",
-    async()=>{
+    async () => {
         return await signOut(auth)
 
     }
 )
+
+
+const createClass = createAsyncThunk(
+    'createClass',
+    async ({ classDate, classTime, trainerId }) => {
+        await axiosLink.post('/classes', { classDate, classTime, trainerId })
+            .then(res => {
+                console.log(res);
+                if (res.data.message) {
+                    throw res?.data?.message
+                }
+                return res.data
+            })
+            .catch(err => {
+                throw err?.message
+            })
+    }
+)
+
 
 // Then, handle actions in your reducers:
 export const usersSlice = createSlice({
@@ -99,9 +118,15 @@ export const usersSlice = createSlice({
             .addCase(logOut.fulfilled, (state, action) => {
 
             })
+            .addCase(createClass.rejected, (state, action) => {
+                
+            })
+            .addCase(createClass.fulfilled, (state, action) => {
+                
+            })
     },
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser, signIn, logOut }
+export { createUser, signIn, logOut, createClass }
 export default usersSlice.reducer

@@ -10,6 +10,8 @@ const AdminNav = () => {
                 <Link href={'/admin/create-trainer'}><li>Create Trainer</li></Link>
                 <Link href={'/admin/class-schedule'}><li>Class Schedule</li></Link>
                 <Link href={'/admin/manage-trainer'}><li>Manage Trainers</li></Link>
+                <Link href={'/'}><li>Back to Home</li></Link>
+
             </ul>
         </section>
     );

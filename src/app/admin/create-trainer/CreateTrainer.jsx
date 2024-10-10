@@ -1,14 +1,13 @@
 'use client'
+import Loader from '@/app/components/Loader/Loader';
+import { createUser } from '@/app/components/Redux/ReduxFuncation';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createUser } from '../components/Redux/ReduxFuncation';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../components/Loader/Loader';
-import Link from 'next/link';
 
-const Registration = () => {
+const CreateTrainer = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
     const handleRegistration = (e) => {
@@ -19,7 +18,7 @@ const Registration = () => {
         const email = inputs.email.value
         const image = inputs.photo.files[0]
         const password = inputs.password.value
-        const role = "trainee"
+        const role = "trainer"
         if (email && password) {
             const fromData = new FormData()
             fromData.append("file", image)
@@ -44,9 +43,11 @@ const Registration = () => {
                                         theme: "dark",
                                         transition: Bounce,
                                     });
+
                                 }
                                 else {
                                     setLoading(false)
+                                    inputs.reset()
                                     toast.success('Registration Successful', {
                                         position: "top-right",
                                         autoClose: 5000,
@@ -64,6 +65,7 @@ const Registration = () => {
 
                 })
                 .catch(err => {
+                    setLoading(false)
                     console.log(err);
 
                 })
@@ -71,8 +73,9 @@ const Registration = () => {
     }
 
     return (
-        <section className='relative'>
-             {
+        <section className='w-full bg-gray-300 relative'>
+
+            {
                 loading == true ?
                     <div className=' w-full h-full z-50 backdrop-blur-sm absolute'>
                         <div className='top-1/4 absolute left-[48%]'>
@@ -82,28 +85,31 @@ const Registration = () => {
                     :
                     ""
             }
-            <form onSubmit={handleRegistration} action="" className='space-y-4'>
-                <div >
-                    <label className='text-xl font-semibold'>Name:</label> <br />
-                    <input name='name' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+
+            <form  onSubmit={handleRegistration} action="" className='space-y-4 bg-white w-3/5 mx-auto top-[20%] relative p-5 rounded-lg border-2 border-gray-500 '>
+            <h1 className='text-2xl font-bold text-center'>Create Trainer Account</h1>
+                <div className='flex justify-between'>
+                    <div >
+                        <label className='text-xl font-semibold'>Name:</label> <br />
+                        <input name='name' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    </div>
+                    <div >
+                        <label className='text-xl font-semibold' >Email:</label> <br />
+                        <input name='email' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    </div>
                 </div>
-                <div >
-                    <label className='text-xl font-semibold' >Email:</label> <br />
-                    <input name='email' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
-                </div>
-                <div >
-                    <label className='text-xl font-semibold' >Upload Image:</label> <br />
-                    <input name='photo' type="file" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
-                </div>
-                <div >
-                    <label className='text-xl font-semibold' >Password:</label> <br />
-                    <input name='password' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                <div className='flex justify-between'>
+                    <div >
+                        <label className='text-xl font-semibold' >Upload Image:</label> <br />
+                        <input name='photo' type="file" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    </div>
+                    <div >
+                        <label className='text-xl font-semibold' >Password:</label> <br />
+                        <input name='password' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    </div>
                 </div>
                 <div className='text-center'>
-                    <button className='border-2 px-3 py-2 w-32 text-lg font-bold bg-blue-600 text-white rounded-lg'>Registration</button>
-                </div>
-                <div className='text-end'>
-                   <Link href={'/'}> <button className='text-lg text-blue-700 font-bold '>Back to Home</button></Link>
+                    <button  className='border-2 px-3 py-2 w-52 text-lg font-bold bg-blue-600 text-white rounded-lg'>Registration</button>
                 </div>
             </form>
             <ToastContainer></ToastContainer>
@@ -111,4 +117,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default CreateTrainer;
