@@ -16,47 +16,49 @@ const createUser = createAsyncThunk(
     'users/create',
     async ({ email, password, name, photo, role }) => {
         console.log(email, password, name, photo);
-        await createUserWithEmailAndPassword(auth, email, password, name, photo)
-            .then(async (res) => {
-                if (res) {
-                    await updateProfile(auth.currentUser, {
-                        displayName: name, photoURL: photo
-                    })
-                        .then(response => {
-                            console.log(res);
-                            if (res) {
-                                signOut(auth)
-
-                                axiosLink.post('/users', { name, email, photo, role })
-                                    .then(res => {
-                                        console.log(res);
-
-                                    })
-                                    .catch(err => {
-                                        console.log(err);
-                                    })
-
-                                return res.user
-                            }
+        try {
+            await createUserWithEmailAndPassword(auth, email, password, name, photo)
+                .then(async (res) => {
+                    if (res) {
+                        await updateProfile(auth.currentUser, {
+                            displayName: name, photoURL: photo
                         })
-                }
-            })
-            .catch(err => {
-                throw err.message
-            })
+                            .then(response => {
+                                console.log(res);
+                                if (res) {
+                                    signOut(auth)
+
+                                    axiosLink.post('/users', { name, email, photo, role })
+                                        .then(res => {
+                                            console.log(res);
+
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                        })
+
+                                    return res.user
+                                }
+                            })
+                    }
+                })
+        }
+        catch (err) {
+            throw err.message
+        }
     }
 )
 
 const signIn = createAsyncThunk(
     'users/signIn',
     async ({ email, password }) => {
-        await signInWithEmailAndPassword(auth, email, password)
-            .then(res => {
-                return res.user
-            })
-            .catch(err => {
-                throw err.message
-            })
+        try {
+            const res = await signInWithEmailAndPassword(auth, email, password)
+            return res.user
+        }
+        catch (err) {
+            throw err.message
+        }
     }
 )
 
@@ -72,19 +74,51 @@ const logOut = createAsyncThunk(
 const createClass = createAsyncThunk(
     'createClass',
     async ({ classDate, startTime, trainerId, endTime }) => {
-        await axiosLink.post('/classes', { classDate, startTime, trainerId, endTime })
-            .then(res => {
-                console.log(res);
-                if (res.data.message) {
-                    throw res?.data?.message
-                }
-                return res.data
-            })
-            .catch(err => {
-                console.log(err);
-                
-                throw err?.response.data
-            })
+        try {
+            const res = await axiosLink.post('/classes', { classDate, startTime, trainerId, endTime })
+            return res.data
+        }
+        catch (err) {
+            throw err?.response.data
+        }
+    }
+)
+
+
+const confirmClass = createAsyncThunk(
+    'confirmClass',
+    async ({ userId, classId }) => {
+        try {
+            const response = await axiosLink.patch(`/classes/${classId}`, { userId })
+            console.log(response);
+
+            return response.data
+
+        }
+        catch (err) {
+            console.log(err);
+            throw err?.response.data
+
+        }
+
+    }
+)
+
+const cancelClass = createAsyncThunk(
+    'cancelClass',
+    async ({ userId, classId }) => {
+        try {
+            const response = await axiosLink.patch(`/cancelclass/${classId}`, { userId })
+            console.log(response);
+            return response.data
+
+        }
+        catch (err) {
+            console.log(err);
+            throw err?.response.data
+
+        }
+
     }
 )
 
@@ -135,9 +169,18 @@ export const usersSlice = createSlice({
             .addCase(createClass.rejected, (state, action) => {
                 console.log(action);
             })
+            .addCase(confirmClass.pending, (state, action) => {
+                console.log(action);
+            })
+            .addCase(confirmClass.fulfilled, (state, action, payload) => {
+                console.log(action, payload);
+            })
+            .addCase(confirmClass.rejected, (state, action) => {
+                console.log(action);
+            })
     },
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser, signIn, logOut, createClass }
+export { createUser, signIn, logOut, createClass, confirmClass, cancelClass }
 export default usersSlice.reducer
