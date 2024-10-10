@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { signIn } from '../components/Redux/ReduxFuncation';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -16,7 +18,22 @@ const Login = () => {
 
         dispatch(signIn({email, password}))
         .then(res=>{
-            navigate.push('/')
+            if (res.error) {
+                toast.error(res.error.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+            }
+            else{
+                navigate.push('/')
+            }
             
         })
     }
@@ -39,6 +56,7 @@ const Login = () => {
                 <Link href={'/'}> <button className='text-lg text-blue-700 font-bold '>Back to Home</button></Link>
                 </div>
             </form>
+            <ToastContainer></ToastContainer>
         </section>
     );
 };

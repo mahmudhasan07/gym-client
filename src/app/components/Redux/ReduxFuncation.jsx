@@ -81,6 +81,8 @@ const createClass = createAsyncThunk(
                 return res.data
             })
             .catch(err => {
+                console.log(err);
+                
                 throw err?.message
             })
     }
@@ -98,31 +100,40 @@ export const usersSlice = createSlice({
         // Add reducers for additional action types here, and handle loading state as needed
         builder
             .addCase(createUser.pending, (state, action) => {
-
+                console.log(action);
             })
             .addCase(createUser.fulfilled, (state, action) => {
-
+                console.log(action);
             })
             .addCase(createUser.rejected, (state, action) => {
-                state.error = action.error
+                console.log(action);
             })
             .addCase(signIn.pending, (state, action) => {
-
+                console.log(action);
             })
             .addCase(signIn.fulfilled, (state, action) => {
-
+                console.log(action);
             })
             .addCase(signIn.rejected, (state, action) => {
-                state.error = action.error
+                console.log(action);
+            })
+            .addCase(logOut.pending, (state, action) => {
+                console.log(action);
             })
             .addCase(logOut.fulfilled, (state, action) => {
-
+                console.log(action);
             })
-            .addCase(createClass.rejected, (state, action) => {
-                
+            .addCase(logOut.rejected, (state, action) => {
+                console.log(action);
+            })
+            .addCase(createClass.pending, (state, action) => {
+                console.log(action);
             })
             .addCase(createClass.fulfilled, (state, action) => {
-                
+                console.log(action);
+            })
+            .addCase(createClass.rejected, (state, action) => {
+                console.log(action);
             })
     },
 })
