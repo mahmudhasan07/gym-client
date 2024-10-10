@@ -1,56 +1,62 @@
 'use client'
+import useAxios, { AxiosSource } from '@/app/components/Hooks/useAxios';
 import useFetch1 from '@/app/components/Hooks/useFetch1';
 import { createClass } from '@/app/components/Redux/ReduxFuncation';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Classes from './Classes';
 
 const CreateClass = () => {
     const [data] = useFetch1('users', "trainer")
+    const axiosLink = useAxios(AxiosSource)
     const dispatch = useDispatch()
     const date = useRef(null)
     const time = useRef(null)
     const trainer = useRef(null)
 
+
     const handleClass = (e) => {
         e.preventDefault()
         const classDate = date.current.value
-        const classTime = time.current.value
+        const startTime = time.current.value
         const trainerId = trainer.current.value
-        console.log(classDate, classTime, trainerId);
+        let [hour, min] = startTime.split(":").map(Number)
+        hour = hour + 2;
+        const endTime = `${String(hour)}:${String(min)}`;
 
-        dispatch(createClass({ classDate, classTime, trainerId }))
-        .then(res=>{
-            console.log(res);
-            if (res.error) {
-                toast.error(res.error.message, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
-            }
-            else{
-                toast.success('Successfully create class', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
-            }
-            
-        })
+        dispatch(createClass({ classDate, startTime, trainerId, endTime }))
+            .then(res => {
+                console.log(res);
+                if (res.error) {
+                    toast.error(res.error.message, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                        transition: Bounce,
+                    });
+                }
+                else {
+                    toast.success('Successfully create class', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                        transition: Bounce,
+                    });
+                }
+
+            })
 
 
     }
@@ -91,8 +97,8 @@ const CreateClass = () => {
                     </div>
                 </div>
             </div>
-            <div>
-
+            <div className='bg-white w-1/2 p-5 rounded-lg mx-auto h-96 top-[10%] relative  space-y-3 '>
+                <Classes></Classes>
             </div>
             <ToastContainer></ToastContainer>
         </section>

@@ -71,8 +71,8 @@ const logOut = createAsyncThunk(
 
 const createClass = createAsyncThunk(
     'createClass',
-    async ({ classDate, classTime, trainerId }) => {
-        await axiosLink.post('/classes', { classDate, classTime, trainerId })
+    async ({ classDate, startTime, trainerId, endTime }) => {
+        await axiosLink.post('/classes', { classDate, startTime, trainerId, endTime })
             .then(res => {
                 console.log(res);
                 if (res.data.message) {
@@ -83,7 +83,7 @@ const createClass = createAsyncThunk(
             .catch(err => {
                 console.log(err);
                 
-                throw err?.message
+                throw err?.response.data
             })
     }
 )

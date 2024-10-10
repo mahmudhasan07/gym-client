@@ -35,7 +35,7 @@ const NavBar = () => {
                             <img onClick={() => hidden == "hidden" ? setHidden("flex") : setHidden("hidden")} src={user?.photoURL} className="w-12 h-12 rounded-full object-cover object-top cursor-pointer" alt="" />
                             <Link href={'/'}><button onClick={handleLogOut} id="button" className=" mt-1 text-base font-semibold">LogOut</button></Link>
                             <div className={`flex flex-col text-center absolute top-14 z-50 -ml-12 bg-white text-black p-2 rounded-xl text-lg ${hidden}`}>
-                                <Link onClick={() => setHidden("hidden")} className="hover:bg-blue-700 hover:text-white rounded-lg px-1" href={`/admin`}>Dashboard</Link>
+                                <Link onClick={() => setHidden("hidden")} className="hover:bg-blue-700 hover:text-white rounded-lg px-1" href={`/trainee`}>Dashboard</Link>
                             </div>
                         </div>
                         :

@@ -2,8 +2,7 @@
 import React, { useContext } from 'react';
 import { ContextSource } from '../components/ContextAPI/ContextAPI';
 
-const Admin = () => {
-
+const Trainee = () => {
     const { user } = useContext(ContextSource)
     return (
         <section className='bg-gray-300 w-full relative '>
@@ -22,7 +21,7 @@ const Admin = () => {
                 </div>
             </div>
         </section>
-    );
+    )
 };
 
-export default Admin;
+export default Trainee;
