@@ -15,23 +15,28 @@ const ContextAPI = ({ children }) => {
     const auth = getAuth(app)
     useEffect(() => {
         onAuthStateChanged(auth, (response) => {
-            setUser(response)
             setLoading(false)
-
+            const email = response?.email
             if (response?.email) {
                 axiosLink.get(`/user/${response.email}`)
                     .then(res => {
-                        console.log(res);
                         setRole(res?.data?.role)
+                        setUser(res.data)
                         setRoleLoading(false)
-
                     })
 
+                    axiosLink.post('/jwt', {email})
+                    .then(res=>{
+                        return res.data
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                    })
             }
-            else{
+            else {
                 setRoleLoading(false)
+                setUser(null)
             }
-
         })
     }, []);
 

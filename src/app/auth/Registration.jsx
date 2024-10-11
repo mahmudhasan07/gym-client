@@ -7,9 +7,11 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../components/Loader/Loader';
 import Link from 'next/link';
+import { IoEye, IoEyeOff } from 'react-icons/io5';
 
 const Registration = () => {
     const [loading, setLoading] = useState(false);
+    const [pass, setPass] = useState("password")
     const dispatch = useDispatch()
     const handleRegistration = (e) => {
         e.preventDefault()
@@ -95,9 +97,17 @@ const Registration = () => {
                     <label className='text-xl font-semibold' >Upload Image:</label> <br />
                     <input name='photo' type="file" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
                 </div>
-                <div >
+                <div  className='relative'>
                     <label className='text-xl font-semibold' >Password:</label> <br />
-                    <input name='password' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    <input name='password' type={pass} className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    <div className='absolute top-9 right-2 text-xl'>
+                        {
+                            pass == 'password' ?
+                            <IoEye className='cursor-pointer' onClick={()=> setPass('text')} />
+                            :
+                            <IoEyeOff className='cursor-pointer' onClick={()=> setPass('password')} />
+                        }
+                    </div>
                 </div>
                 <div className='text-center'>
                     <button className='border-2 px-3 py-2 w-32 text-lg font-bold bg-blue-600 text-white rounded-lg'>Registration</button>

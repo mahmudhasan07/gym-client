@@ -6,7 +6,7 @@ import TrainerClass from "./TrainerClass";
 export default function Page() {
     return (
         <PrivateTrainer>
-            <div className="flex">
+            <div className="flex flex-wrap">
                 <TrainerNav></TrainerNav>
                 <TrainerClass></TrainerClass>
             </div>

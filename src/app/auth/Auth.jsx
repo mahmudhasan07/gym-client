@@ -9,17 +9,17 @@ const Auth = () => {
     const [position, setPosition] = useState('translate-x-full');
     return (
         <section id='auth' className='bg-gray-200 h-screen'>
-            <div className='border-2 bg-white w-2/3 p-5 rounded-lg border-gray-300 relative top-[20%] mx-auto '>
-                <div className='flex justify-around'>
+            <div className='border-2 bg-white lg:w-2/3 md:w-4/5  p-5 rounded-lg border-gray-300 relative lg:top-[20%] top-[10%] mx-auto '>
+                <div className='flex justify-around flex-wrap'>
                 <div className='my-auto'>
                     <Login></Login>
                 </div>
-                <hr className='border-2 h-96 border-blue-600 rounded-lg' />
+                <hr className='border-2 h-96 lg:block md:hidden hidden border-blue-600 rounded-lg' />
                 <div className='my-auto'>
                     <Registration></Registration>
                 </div>
                 </div>
-                <div id='auth_banner' className={`absolute border-2 ${position} p-5 w-1/2 left-0 h-full top-0 text-white rounded-lg text-center bg-gradient-to-b from-blue-700 to-blue-500 `}>
+                <div id='auth_banner' className={`absolute border-2 ${position} hidden lg:block  p-5 w-1/2 left-0 h-full top-0 text-white rounded-lg text-center bg-gradient-to-b from-blue-700 to-blue-500 `}>
                     
                     {
                         position == "translate-x-full" ?

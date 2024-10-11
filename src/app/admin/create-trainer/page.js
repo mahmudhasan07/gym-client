@@ -5,7 +5,7 @@ import CreateTrainer from "./CreateTrainer";
 export default function Page() {
     return (
         <PrivateAdmin>
-            <section className="flex">
+            <section className="flex flex-wrap">
                 <AdminNav></AdminNav>
                 <CreateTrainer></CreateTrainer>
             </section>

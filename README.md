@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Project Overview:</h1>
+<p>This is a GYM management website, Where it has 3 panel. Admin , Trainer, Trainee panel. In admin panel, admin can create trainer profile , create class time and edit trainer profile. In Trainer panel , trainer can see his/her today's class schedule. In Trainee panel , trainee can confirm and class their class. </p>
 
-## Getting Started
+<h1>Technology Stack:</h1>
+<p>Font-End : Next.js , Redux, TanStack Query, Firebase </p>
+<p>Backend : Node.js(module) , Express.js, Mongoose, JWT, Cors</p>
 
-First, run the development server:
+<h1>API Endpoints:</h1>
+<p></p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h1> Database Schema:</h1>
+<img src='' />
+<img src='' />
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h1>Admin Credentials::</h1>
+<p>Email : mahmudhasan@gmail.com</p>
+<p>Password: 123456</p>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+<h1>Instructions to Run Locally:</h1>
+<p>Font-End</p>
+<ul>
+<li>First install all npm packages  by running npm install</li>
+<li>Then run npm run dev</li>
+</ul>
+<br/>
+<p>Backend</p>
+<ul>
+<li>First install all npm packages  by running npm install</li>
+<li>Set environment variable</li>
+<p>
+DB_user='gym-management'
+DB_pass='B5CORI1v3zG6uyGA'
+user_token='57e4c991ac954670437614fa7e44d02f46de465e4737254722c275d8d39c99f351e3b4816fe11f2d0ddd12d2e437e3ba35fcd78ab355898e3102abee041a757ad2676750824aade0c7d9b01620dcb950'
+</p>
+<li>Then run npm --watch index.js</li>
+</ul>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h1>Live Hosting Link:</h1>
+<p>Font-End Link : </p>
+<p>Backend Link : https://gym-server-production-763a.up.railway.app</p>
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

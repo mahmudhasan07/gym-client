@@ -5,7 +5,7 @@ import CreateClass from "./CreateClass";
 export default function Page() {
     return (
        <PrivateAdmin>
-         <div className="flex">
+         <div className="flex flex-wrap">
             <AdminNav></AdminNav>
             <CreateClass></CreateClass>
         </div>

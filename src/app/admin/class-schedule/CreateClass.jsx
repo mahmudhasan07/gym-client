@@ -62,10 +62,10 @@ const CreateClass = () => {
     }
 
     return (
-        <section className='w-full bg-gray-300 '>
-            <div className='bg-white relative w-1/2 p-5 rounded-lg mx-auto top-[5%] space-y-3'>
+        <section className='lg:w-4/5 md:w-3/4 w-full lg:h-auto md:h-auto h-screen bg-gray-300 '>
+            <div className='bg-white relative lg:w-3/5 md:w-3/5  p-5 rounded-lg mx-auto top-[5%] space-y-3'>
                 <h1 className='text-2xl font-bold text-center'>Create Class Schedule</h1>
-                <div className='flex justify-between'>
+                <div className='flex lg:justify-between justify-center flex-wrap gap-2'>
                     <div className='text-xl font-semibold'>
                         <label htmlFor="">Enter Class Date:</label> <br />
                         <input ref={date} type="date" className='border-2 p-1 w-64 rounded-lg border-gray-500' name="" id="" />
@@ -75,7 +75,7 @@ const CreateClass = () => {
                         <input ref={time} type="time" className='border-2 p-1 w-64 rounded-lg border-gray-500' name="" id="" />
                     </div>
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex lg:justify-between justify-center flex-wrap gap-2'>
                     <div className='text-xl font-semibold'>
                         <label htmlFor="">Select Your Trainer</label> <br />
                         <select ref={trainer} className='border-2 p-1 w-64 rounded-lg border-gray-500' id="">
@@ -97,7 +97,7 @@ const CreateClass = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-white w-1/2 p-5 rounded-lg mx-auto h-96 top-[10%] relative  space-y-3 '>
+            <div className='bg-white lg:w-3/5 md:w-3/5 p-5 rounded-lg mx-auto max-h-96 overflow-y-auto top-[10%] relative  space-y-3 '>
                 <Classes></Classes>
             </div>
             <ToastContainer></ToastContainer>

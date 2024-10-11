@@ -13,7 +13,7 @@ const Classes = () => {
                 "loading"
                 :
                 data?.map((e,idx)=>
-                    <div key={idx} className='flex font-semibold justify-between border-2 rounded-lg text-lg border-gray-500 p-2'>
+                    <div key={idx} className='flex font-semibold lg:justify-between gap-2 flex-wrap border-2 rounded-lg text-lg border-gray-500 p-2'>
                         <img src={e.trainerId.photo} className='w-16 h-16 object-cover object-top' alt="" />
                         <h1 className='my-auto'>{e.trainerId.name}</h1>
                         <h1 className='my-auto'>Class Date : {e.classDate}</h1>

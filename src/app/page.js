@@ -2,6 +2,7 @@ import Image from "next/image";
 import Banner from "./components/Banner/Banner";
 import Support from "./components/Support/Support";
 import NavBar from "./components/Navbar/Navbar";
+import OurTrainer from "./components/OurTrainer/OurTrainer";
 
 export const metadata = {
   title: "Titanium Fitness",
@@ -19,6 +20,7 @@ export default function Home() {
     <div>
       <NavBar></NavBar>
       <Banner></Banner>
+      <OurTrainer></OurTrainer>
       <Support></Support>
     </div>
   );

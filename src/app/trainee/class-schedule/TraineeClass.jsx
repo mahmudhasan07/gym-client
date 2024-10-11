@@ -91,15 +91,15 @@ const TraineeClass = () => {
 
 
     return (
-        <section className='bg-gray-300 w-full relative '>
-            <div className='border-2 w-4/5 bg-white rounded-lg relative top-[15%] mx-auto p-5 border-gray-500 space-y-3'>
+        <section className='bg-gray-300 lg:w-4/5 md:w-3/4 w-full lg:h-auto md:h-auto h-screen '>
+            <div className='border-2 lg:w-4/5 md:w-11/12  bg-white rounded-lg relative top-[15%] mx-auto p-5 border-gray-500 space-y-3'>
                 <h1 className='text-center text-2xl font-bold'>Todays Class Schedule</h1>
                 {
                     data == 'l' ?
                         "loading"
                         :
                         data?.map((e, idx) =>
-                            <div key={idx} className='flex font-semibold justify-around border-2 rounded-lg text-lg border-gray-500 p-2'>
+                            <div key={idx} className='flex font-semibold justify-around flex-wrap border-2 rounded-lg text-lg border-gray-500 p-2'>
                                 <img src={e.trainerId.photo} className='w-16 h-16 object-cover object-top' alt="" />
                                 <h1 className='my-auto'>{e.trainerId.name}</h1>
                                 <h1 className='my-auto'>Class Date : {e.classDate}</h1>

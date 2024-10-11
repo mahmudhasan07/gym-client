@@ -25,6 +25,8 @@ const createUser = createAsyncThunk(
                         })
                             .then(response => {
                                 console.log(res);
+                                logOut()
+
                                 if (res) {
                                     signOut(auth)
 
@@ -54,6 +56,7 @@ const signIn = createAsyncThunk(
     async ({ email, password }) => {
         try {
             const res = await signInWithEmailAndPassword(auth, email, password)
+
             return res.user
         }
         catch (err) {
@@ -123,6 +126,24 @@ const cancelClass = createAsyncThunk(
 )
 
 
+const updateUserInfo = createAsyncThunk(
+    'updateUserInfo',
+    async ({ email, updateName, updateImage }) => {
+        try {
+            const res = await axiosLink.patch(`/update/${email}`, { updateName, updateImage })
+            console.log(res);
+            return res.data
+
+        }
+        catch (err) {
+            console.log(err);
+            throw err?.message
+
+        }
+    }
+)
+
+
 // Then, handle actions in your reducers:
 export const usersSlice = createSlice({
     name: 'Auth',
@@ -182,5 +203,5 @@ export const usersSlice = createSlice({
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser, signIn, logOut, createClass, confirmClass, cancelClass }
+export { createUser, signIn, logOut, createClass, confirmClass, cancelClass, updateUserInfo }
 export default usersSlice.reducer

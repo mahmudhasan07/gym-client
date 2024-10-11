@@ -1,6 +1,6 @@
 'use client'
 import Loader from '@/app/components/Loader/Loader';
-import { createUser } from '@/app/components/Redux/ReduxFuncation';
+import { createUser, logOut } from '@/app/components/Redux/ReduxFuncation';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -46,6 +46,7 @@ const CreateTrainer = () => {
 
                                 }
                                 else {
+                                    dispatch(logOut())
                                     setLoading(false)
                                     inputs.reset()
                                     toast.success('Registration Successful', {
@@ -73,7 +74,7 @@ const CreateTrainer = () => {
     }
 
     return (
-        <section className='w-full bg-gray-300 relative'>
+        <section className='lg:w-4/5 md:w-3/4 w-full lg:h-auto md:h-auto h-screen bg-gray-300 relative'>
 
             {
                 loading == true ?
@@ -86,9 +87,9 @@ const CreateTrainer = () => {
                     ""
             }
 
-            <form  onSubmit={handleRegistration} action="" className='space-y-4 bg-white w-3/5 mx-auto top-[20%] relative p-5 rounded-lg border-2 border-gray-500 '>
+            <form  onSubmit={handleRegistration} action="" className='space-y-4 bg-white lg:w-4/5 md:w-4/5   mx-auto top-[20%] relative p-5 rounded-lg border-2 border-gray-500 '>
             <h1 className='text-2xl font-bold text-center'>Create Trainer Account</h1>
-                <div className='flex justify-between'>
+                <div className='flex justify-between flex-wrap'>
                     <div >
                         <label className='text-xl font-semibold'>Name:</label> <br />
                         <input name='name' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
@@ -98,7 +99,7 @@ const CreateTrainer = () => {
                         <input name='email' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
                     </div>
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex justify-between flex-wrap'>
                     <div >
                         <label className='text-xl font-semibold' >Upload Image:</label> <br />
                         <input name='photo' type="file" className='border-2 p-1 rounded-lg border-gray-600 w-96' />

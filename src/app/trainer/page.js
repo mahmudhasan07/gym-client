@@ -5,7 +5,7 @@ import TrainerNav from "./TrainerNav";
 export default function Page() {
     return (
         <PrivateTrainer>
-            <div className="flex">
+            <div className="flex flex-wrap">
             <TrainerNav></TrainerNav>
             <Trainer></Trainer>
             </div>

@@ -1,14 +1,17 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signIn } from '../components/Redux/ReduxFuncation';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { IoEyeOff } from "react-icons/io5";
+import { IoEye } from "react-icons/io5";
 
 const Login = () => {
     const dispatch = useDispatch()
+    const [pass, setPass] = useState("password")
     const navigate = useRouter()
     const handleLogin = (e) => {
         e.preventDefault()
@@ -45,9 +48,18 @@ const Login = () => {
                     <label className='text-xl font-semibold' >Email:</label> <br />
                     <input name='email' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
                 </div>
-                <div >
+                <div className='relative'>
                     <label className='text-xl font-semibold'>Password:</label> <br />
-                    <input name='password' type="text" className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    <input name='password' type={pass} className='border-2 p-1 rounded-lg border-gray-600 w-96' />
+                    <div className='absolute top-9 right-2 text-xl'>
+                        {
+                            pass == 'password' ?
+                            <IoEye className='cursor-pointer' onClick={()=> setPass('text')} />
+                            :
+                            <IoEyeOff className='cursor-pointer' onClick={()=> setPass('password')} />
+                        }
+                    </div>
+
                 </div>
                 <div className='text-center'>
                     <button className='border-2 px-3 py-2 w-32 text-lg font-bold bg-blue-600 text-white rounded-lg'>Log In</button>

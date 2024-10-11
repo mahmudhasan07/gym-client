@@ -11,16 +11,16 @@ const TrainerClass = () => {
     console.log(data);
 
     return (
-        <section className='bg-gray-300 w-full relative '>
-            <div className='border-2 w-4/5 bg-white rounded-lg relative top-[15%] mx-auto p-5 border-gray-500 space-y-3 max-h-96 overflow-y-auto'>
+        <section className='bg-gray-300 lg:w-4/5 md:w-3/4 w-full lg:h-auto md:h-auto h-screen '>
+            <div className='border-2 lg:w-4/5 md:5/6 bg-white rounded-lg relative top-[15%] mx-auto p-5 border-gray-500 space-y-3 max-h-96 overflow-y-auto'>
                 <h1 className='text-center text-2xl font-bold'>Todays Class Schedule</h1>
                 {
                     data == 'l' ?
                         "loading"
                         :
                         data?.map((e, idx) =>
-                            <div key={idx} className='flex font-semibold justify-around border-2 rounded-lg text-lg border-gray-500 p-2'>
-                                <img src={user?.photoURL} className='w-16 h-16 object-cover object-top' alt="" />
+                            <div key={idx} className='flex font-semibold justify-around gap-1 border-2 rounded-lg text-lg border-gray-500 p-2'>
+                                <img src={user?.photo} className='w-16 h-16 object-cover object-top my-auto' alt="" />
                                 <h1 className='my-auto'>{user?.displayName}</h1>
                                 <h1 className='my-auto'>Class Date : {e.classDate}</h1>
                                 <div>

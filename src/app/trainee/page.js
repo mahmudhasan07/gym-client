@@ -5,7 +5,7 @@ import TraineeNav from "./TraineeNav";
 export default function Page() {
     return (
         <PrivateTrainee>
-            <div className="flex">
+            <div className="flex flex-wrap">
                 <TraineeNav></TraineeNav>
                 <Trainee></Trainee>
             </div>

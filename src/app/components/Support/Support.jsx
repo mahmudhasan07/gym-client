@@ -12,11 +12,11 @@ const Support = () => {
 
     return (
         <section className='my-10'>
-            <h1 id='title' className='text-5xl text-center my-5 font-extrabold'>Technical Support </h1>
+            <h1 id='title' className='lg:text-5xl md:text-4xl text-3xl text-center my-5 font-extrabold'>Technical Support </h1>
             <p className='title-text text-base font-semibold text-center my-2'>If you are have any technical issue with our website, please let us know.</p>
             <p className='title-text text-base font-semibold text-center my-1'>We try to solve the problem as soon as possible</p>
 
-            <div className='flex justify-around my-5 overflow-hidden'>
+            <div className='flex justify-around flex-wrap my-5 overflow-hidden'>
                 <motion.div ref={ref}
                     initial={{ opacity: 0, x: -200 }}
 
@@ -27,7 +27,7 @@ const Support = () => {
                     }
                         :
                         {}}
-                    className='w-2/5'>
+                    className='lg:w-2/5 md:w-1/2'>
                     <Lottie animationData={support} loop={true}></Lottie>
                 </motion.div>
                 <motion.div
