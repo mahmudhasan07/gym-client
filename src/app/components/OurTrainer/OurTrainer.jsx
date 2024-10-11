@@ -14,7 +14,7 @@ const OurTrainer = () => {
                     data == "l" ?
                         "loading"
                         :
-                        data.map((e, idx) =>
+                        data.slice(0,5).map((e, idx) =>
                             <motion.div
                                 initial={{ opacity: 0, x: -(100 * (idx + 1)) }}
                                 whileInView={{ opacity: 1, x: 0, transition: { duration: 1.5 } }}
