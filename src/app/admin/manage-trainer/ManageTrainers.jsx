@@ -1,12 +1,52 @@
 'use client'
 import useFetch1 from '@/app/components/Hooks/useFetch1';
 import Modal from '@/app/components/Modal/Modal';
+import { userDelete } from '@/app/components/Redux/ReduxFuncation';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ManageTrainers = () => {
 
     const [data, refetch] = useFetch1('users', "trainer")
     const [modal, setModal] = useState(false)
+    const dispatch = useDispatch()
+
+    const handleDelete =(email)=>{
+        console.log(email);
+        dispatch(userDelete({email}))
+        .then(res=>{
+            if (res.error) {
+                toast.error(res.error.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+            }
+            else{
+                toast.success('update successful', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+            }
+            refetch()
+        })
+        
+    }
 
     return (
         <section className='lg:w-4/5 md:w-3/4 w-full lg:h-auto md:h-auto h-screen bg-gray-300'>
@@ -23,7 +63,7 @@ const ManageTrainers = () => {
                                     <h1 className='my-auto text-xl font-semibold'>{item?.name}</h1>
                                     <div className='my-auto flex gap-3'>
                                         <button onClick={() => setModal(true)} id='button' className='bg-blue-700 text-white font-semibold text-lg'>Edit</button>
-                                        <button id='button' className='bg-blue-700 text-white font-semibold text-lg'>Delete</button>
+                                        <button onClick={()=> handleDelete(item?.email)} id='button' className='bg-blue-700 text-white font-semibold text-lg'>Delete</button>
 
                                     </div>
                                     <dialog open={modal}>
@@ -36,6 +76,7 @@ const ManageTrainers = () => {
                 </div>
 
             </div>
+            <ToastContainer></ToastContainer>
         </section>
     );
 };

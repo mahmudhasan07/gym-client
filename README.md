@@ -6,7 +6,7 @@
 <p>Backend : Node.js(module) , Express.js, Mongoose, JWT, Cors</p>
 
 <h1>API Endpoints:</h1>
-<p></p>
+<p>Get, Patch , Post Delete</p>
 
 <h1> Database Schema:</h1>
 <img src='https://i.imgur.com/HZhU6QZ.png' />

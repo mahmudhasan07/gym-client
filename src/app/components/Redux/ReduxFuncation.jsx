@@ -144,6 +144,23 @@ const updateUserInfo = createAsyncThunk(
 )
 
 
+const userDelete = createAsyncThunk(
+    'deleteUser',
+    async ({ email }) => {
+        try {
+            const res = await axiosLink.delete(`/delete/${email}`)
+            return res.data
+
+        }
+        catch (err) {
+            console.log(err);
+            throw err?.message
+
+        }
+    }
+)
+
+
 // Then, handle actions in your reducers:
 export const usersSlice = createSlice({
     name: 'Auth',
@@ -203,5 +220,5 @@ export const usersSlice = createSlice({
 })
 
 // export const { increment, decrement, incrementByAmount } = usersSlice.actions
-export { createUser, signIn, logOut, createClass, confirmClass, cancelClass, updateUserInfo }
+export { createUser, signIn, logOut, createClass, confirmClass, cancelClass, updateUserInfo, userDelete }
 export default usersSlice.reducer
