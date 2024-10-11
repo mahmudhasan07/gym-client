@@ -10,7 +10,7 @@ const ContextAPI = ({ children }) => {
     const axiosLink = useAxios(AxiosSource)
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [roleLoading, setRoleLoading] = useState(false);
+    const [roleLoading, setRoleLoading] = useState(true);
     const [role, setRole] = useState(null);
     const auth = getAuth(app)
     useEffect(() => {
@@ -19,7 +19,6 @@ const ContextAPI = ({ children }) => {
             setLoading(false)
 
             if (response?.email) {
-                setRoleLoading(true)
                 axiosLink.get(`/user/${response.email}`)
                     .then(res => {
                         console.log(res);
@@ -28,6 +27,9 @@ const ContextAPI = ({ children }) => {
 
                     })
 
+            }
+            else{
+                setRoleLoading(false)
             }
 
         })

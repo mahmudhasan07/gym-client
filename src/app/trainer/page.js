@@ -1,5 +1,14 @@
+import PrivateTrainer from "../components/PrivateRoutes/PrivateTrainer";
+import Trainer from "./Trainer";
+import TrainerNav from "./TrainerNav";
+
 export default function Page() {
     return (
-        <div></div>
+        <PrivateTrainer>
+            <div className="flex">
+            <TrainerNav></TrainerNav>
+            <Trainer></Trainer>
+            </div>
+        </PrivateTrainer>
     );
 }

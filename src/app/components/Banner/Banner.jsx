@@ -33,37 +33,34 @@ const Banner = () => {
             >
                 <SwiperSlide>
                     <div className='bg-black relative rounded-xl exo-2'>
-                        <img src='https://i.ibb.co/2Zm86yp/galcier.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-55' />
-                        <div className='w-1/2 absolute top-1/3 text-white lg:left-12 md:left-7 left-1 italic'>
-                            <h1 className='text-6xl font-bold'>Glacier National Park</h1>
-                            <p className='text-xl font-semibold'>One of the most striking parks in America. There are more than 700 miles of hiking trails in this Montana crown jewel, plus 13 designated areas for camping</p>
+                        <img src='https://i.imgur.com/3E1N0Rr.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-45' />
+                        <div className='w-1/2 absolute top-[42%] text-white lg:left-12 md:left-7 left-1 italic'>
+                            <p className='text-4xl font-semibold'>Motivation is what gets you started. Habit is what keeps you going.</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className='bg-black relative rounded-xl exo-2'>
-                        <img src='https://i.ibb.co/pvVRS4r/maldive.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-55' />
-                        <div className='w-1/2 absolute top-1/3 text-white lg:left-12 md:left-7 left-1 italic'>
-                            <h1 className='text-6xl font-bold'>Maldives</h1>
-                            <p className='text-xl font-semibold'>It is not cheap or easy to reach, but this isolated Indian Ocean vacation spot located southwest of India is the personification of a dreamy tropical retreat.</p>
+                        <img src='https://i.imgur.com/hjMyIpN.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-45' />
+                        <div className='w-1/2 absolute top-[42%] text-white lg:left-12 md:left-7 left-1 italic'>
+                            <p className='text-4xl font-semibold'>Don’t stop when you’re tired. Stop when you’re done.</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className='bg-black relative rounded-xl exo-2'>
-                        <img src='https://i.ibb.co/cyHg4Sk/Santorini.png' className='w-full h-[650px] object-cover rounded-xl opacity-55' />
-                        <div className='w-1/2 absolute top-1/3 text-white lg:left-12 md:left-7 left-1 italic'>
-                            <h1 className='text-6xl font-bold'>Santorini</h1>
-                            <p className='text-xl font-semibold'>Frequently touted as a top honeymoon destination, Greece's most popular isle woos newlyweds every year with its breathtaking sunsets, whitewashed villages and colorful beaches.</p>
+                        <img src='https://i.imgur.com/x6bL9BZ.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-45' />
+                        <div className='w-1/2 absolute top-[42%] text-white lg:left-12 md:left-7 left-1 italic'>
+                            
+                            <p className='text-4xl font-semibold'>No matter how slow you go, you’re still lapping everyone on the couch.</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className='bg-black relative rounded-xl exo-2'>
-                        <img src='https://i.ibb.co/0CsKTGH/cox-s-bazar.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-55' />
-                        <div className='w-1/2 absolute top-1/3 text-white lg:left-12 md:left-7 left-1 italic'>
-                            <h1 className='text-6xl font-bold'>Cox's Bazar</h1>
-                            <p className='text-xl font-semibold'>Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south.</p>
+                        <img src='https://i.imgur.com/oClB0M5.jpg' className='w-full h-[650px] object-cover rounded-xl opacity-45' />
+                        <div className='w-1/2 absolute top-[42%] text-white lg:left-12 md:left-7 left-1 italic'>
+                            <p className='text-4xl font-semibold'>Strength doesn’t come from what you can do, it comes from overcoming the things you once thought you couldn’t.</p>
                         </div>
                     </div>
                 </SwiperSlide>
