@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../Redux/ReduxFuncation';
 
 const NavBar = () => {
-    const { user } = useContext(ContextSource)
+    const { user, role } = useContext(ContextSource)
     const dispatch = useDispatch()
     const navigate = useRouter()
     const [hidden, setHidden] = useState("hidden")
@@ -21,6 +21,8 @@ const NavBar = () => {
             })
         
     }
+    console.log(role);
+    
 
     return (
         <section className=' flex justify-around bg-blue-700 text-white p-2'>
